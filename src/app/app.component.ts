@@ -51,4 +51,5 @@ export class MyApp {
       default:
       this.nav.setRoot(page.component);
     }
+  }
 }

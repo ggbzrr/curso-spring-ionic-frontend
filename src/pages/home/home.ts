@@ -48,4 +48,9 @@ export class HomePage {
       error => {})
   }
 
+  signup() {
+    //debugar por enquanto
+    //console.log("passou");
+    this.navCtrl.push('SignupPage');
+  }
 }
