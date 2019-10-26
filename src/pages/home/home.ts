@@ -31,10 +31,10 @@ export class HomePage {
   }
   
   ionViewDidEnter() {
-    this.auth.refreshToken()
+    this.auth.refreshToken()//Atualiza token
       .subscribe(response => {
         this.auth.successfulLogin(response.headers.get('Authorization'));
-        this.navCtrl.setRoot('CategoriasPage');
+        this.navCtrl.setRoot('CategoriasPage');//abre pagina de categoria
       },
       error => {});  
   }
