@@ -38,7 +38,8 @@ export class CategoriasPage {
       );   
   }
   
-  showProdutos() {
-    this.navCtrl.push('ProdutosPage');    
+  //evento click da lista de categoria que chama sua pagina ProdutosPage que é está no controlador da pagina produtos
+  showProdutos(categoria_id : string) {
+    this.navCtrl.push('ProdutosPage', {categoria_id: categoria_id});//Primeiro é o nome do atributo, segundo é o valor do atributo que é o parametros que está chegando no metodo    
   }
 }
