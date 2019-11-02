@@ -1,4 +1,3 @@
-import { ItemPedidoDTO } from './../../models/item-pedido.dto';
 import { EnderecoDTO } from './../../models/endereco.dto';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';

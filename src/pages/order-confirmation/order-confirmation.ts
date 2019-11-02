@@ -6,6 +6,8 @@ import { PedidoDTO } from '../../models/pedido.dto';
 import { CartItem } from '../../models/cart-item';
 import { ClienteDTO } from '../../models/cliente.dto';
 import { ClienteService } from '../../services/domain/cliente.service';
+import { PedidoService } from '../../services/domain/pedido.service';
+import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 
 
 @IonicPage()
@@ -24,7 +26,8 @@ export class OrderConfirmationPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public cartService: CartService,
-    public clienteService: ClienteService) {
+    public clienteService: ClienteService,
+    public pedidoService: PedidoService) {
       this.pedido = this.navParams.get('pedido');
   }
 
@@ -48,5 +51,24 @@ export class OrderConfirmationPage {
 
   total() {
     return this.cartService.total();
+  }
+
+  back() {
+    this.navCtrl.setRoot('CartPage');
+  }
+
+  checkout(){
+    this.pedidoService.insert(this.pedido)
+      .subscribe(response =>{
+        //limpar carrinho
+        this.cartService.createOrClearCart();
+        //testar se o location do pedido salvo se está funcionando
+        console.log(response.headers.get('location'));
+      },
+      error => {
+        if (error.status == 403){
+          this.navCtrl.setRoot('HomePage'); 
+        }
+      })
   }
 }
