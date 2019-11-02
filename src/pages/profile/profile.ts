@@ -1,7 +1,7 @@
+import { ClienteDTO } from './../../models/cliente.dto';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { StorageService } from '../../services/storage.service';
-import { ClienteDTO } from '../../models/cliente.dto';
 import { ClienteService } from '../../services/domain/cliente.service';
 import { API_CONFIG } from '../../config/api.config';
 
@@ -26,7 +26,9 @@ export class ProfilePage {
     if (localUser && localUser.email){
       this.clienteService.findByEmail(localUser.email)
         .subscribe(response => {
-          this.cliente = response;
+          this.cliente = response as ClienteDTO; //precisei converter a resposta para clienteDto pois esse cara aqui no front tem menos dados q o back
+          //foi retirado a tipagem ClienteDto no metodo findByEmail, assim vem todos dados do back
+          
           //buscar imagem
           this.getImageIfExists();
         },
