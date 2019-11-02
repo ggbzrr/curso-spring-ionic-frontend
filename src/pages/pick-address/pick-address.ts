@@ -1,3 +1,4 @@
+import { RefDTO } from './../../models/ref.dto';
 import { ItemPedidoDTO } from './../../models/item-pedido.dto';
 import { EnderecoDTO } from './../../models/endereco.dto';
 import { Component } from '@angular/core';
@@ -33,14 +34,13 @@ export class PickAddressPage {
         .subscribe(response => {
           this.items = response['enderecos'];
 
-          let cart = this.cartService.getCart();
-          let itens2 = cart.items.map(x => {return {quantidade: x.quantidade, produto: {id: x.produto.id}}})
+          let cart = this.cartService.getCart();          
 
           this.pedido = {
-            cliente: {id: response['id']}, 
+            cliente: {id: response['id']},
             enderecoDeEntrega: null,
             pagamento: null,
-            itens : itens2
+            itens : cart.items.map(x => {return {quantidade: x.quantidade, produto: {id: x.produto.id}}})
           }
         },
         error => {
