@@ -1,3 +1,4 @@
+import { ItemPedidoDTO } from './../../models/item-pedido.dto';
 import { EnderecoDTO } from './../../models/endereco.dto';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -33,12 +34,13 @@ export class PickAddressPage {
           this.items = response['enderecos'];
 
           let cart = this.cartService.getCart();
+          let itens2 = cart.items.map(x => {return {quantidade: x.quantidade, produto: {id: x.produto.id}}})
 
           this.pedido = {
             cliente: {id: response['id']}, 
             enderecoDeEntrega: null,
             pagamento: null,
-            itens : cart.items.map(x => {return {quantidade: x.quantidade, produto: {id: x.produto.id}}})
+            itens : itens2
           }
         },
         error => {
