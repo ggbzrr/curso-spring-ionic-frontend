@@ -1,3 +1,4 @@
+import { ItemPedidoDTO } from './../../models/item-pedido.dto';
 import { EnderecoDTO } from './../../models/endereco.dto';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -53,8 +54,8 @@ export class PickAddressPage {
   }
 
   nextPage(item: EnderecoDTO) {
-    this.pedido.enderecoDeEntrega = {id: item.id};
-    console.log(this.pedido);
+    this.pedido.enderecoDeEntrega = {id: item.id}; 
+    this.navCtrl.push('PaymentPage',{pedido: this.pedido});
   }
 
 }

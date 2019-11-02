@@ -26,7 +26,8 @@ export class ProfilePage {
     if (localUser && localUser.email){
       this.clienteService.findByEmail(localUser.email)
         .subscribe(response => {
-          this.cliente = response as ClienteDTO; //precisei converter a resposta para clienteDto pois esse cara aqui no front tem menos dados q o back
+          this.cliente = response as ClienteDTO;
+          //precisei converter a resposta para clienteDto pois esse cara aqui no front tem menos dados q o back
           //foi retirado a tipagem ClienteDto no metodo findByEmail, assim vem todos dados do back
           
           //buscar imagem
