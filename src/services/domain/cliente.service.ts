@@ -11,6 +11,10 @@ export class ClienteService{
 
     }
 
+    findById(id: string){        
+        return this.http.get(`${API_CONFIG.baseUrl}/clientes/${id}`);        
+    }
+
     findByEmail(email: string){
         //let token = this.storage.getLocalUser().token;
         //let authHeader = new HttpHeaders({'Authorization': 'Bearer '+ token});
@@ -35,4 +39,6 @@ export class ClienteService{
             }
         ); 
     }    
+
+
 }
