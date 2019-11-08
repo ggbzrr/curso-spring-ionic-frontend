@@ -7,7 +7,7 @@ import { CartItem } from '../../models/cart-item';
 import { ClienteDTO } from '../../models/cliente.dto';
 import { ClienteService } from '../../services/domain/cliente.service';
 import { PedidoService } from '../../services/domain/pedido.service';
-import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+
 
 
 @IonicPage()
